@@ -1,16 +1,38 @@
-FROM node:latest
-MAINTAINER onit4ku <onitaku@gmail.com>
+FROM ubuntu:latest
+LABEL onit4ku <onitaku@gmail.com>
 
-RUN apt-get update -qq \
-  && apt-get install -y build-essential libpq-dev libkrb5-dev \
-  && useradd -g  www-data node --create-home
+#basic mern-stack install application meant to be run along side mongodb
+#it includes react-scripts and nodemon for development
 
-ADD ./package.json /srv/express-mongo/package.json
-WORKDIR /srv/express-mongo
+ENV NODE_ENV development
 
-RUN chown -R node:www-data /usr/local /srv/express-mongo
-USER node
+RUN apt-get update -q \
+    && apt-get install -yqq \
+    curl \
+    git \
+    ssh \
+    gcc \
+    make \
+    build-essential \
+    libkrb5-dev \
+    sudo \
+    apt-utils \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN set -xe && npm install webpack -g && npm install
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN sudo apt-get install -yq nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 3000
+RUN npm install --global nodemon --global react-scripts --global foreman
+
+RUN mkdir -p /opt/mern.js
+ADD Procfile /opt/mern.js/Procfile
+ADD start.sh /scripts/start.sh
+RUN chmod +x /scripts/start.sh
+WORKDIR /opt/mern.js
+
+CMD ["/scripts/start.sh"]
+
+EXPOSE 80 443 3000 35729 3001

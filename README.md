@@ -1,11 +1,5 @@
 # docker-babel
 > A Dockerized Mongo, Express, Node, React project
 
-## Build
-```bash
-$ docker-compose build
-```
-## Run
-```bash
-$ docker-compose up
-```
+##  basic mern-stack install application meant to be run along side mongodb
+##  it includes react-scripts and nodemon for development

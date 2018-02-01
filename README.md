@@ -13,7 +13,7 @@ Basic mern-stack install application meant to be run along side mongodb (not inc
     docker build /home/user/projects/docker-babel -t "docker-babel"
 
 
-### 2. Run `docker-babel` image container:
+### 3. Run `docker-babel` image container:
 
     docker run -i -t docker-babel:latest /bin/bash
 
@@ -39,7 +39,15 @@ https://store.docker.com/images/mongo
 
 ### Create and connect Containers
 
-#### Create the network:
+You can use docker-compose to link multiple containers so they have visibility between them.
+
+> Official documentation: https://docs.docker.com/compose/
+
+Or you can use docker to create a network and join the different containers that are running:
+
+> Official documentation: https://docs.docker.com/engine/reference/commandline/network/
+
+#### Create the connection using the network command:
 
     sudo docker network create mynetwork
 
@@ -49,6 +57,7 @@ https://store.docker.com/images/mongo
     docker network connect mynetwork idOrNameContainer2
     
     docker network list
+
 
 ~~~
 

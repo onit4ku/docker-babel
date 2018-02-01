@@ -54,63 +54,7 @@ Or you can use docker to create a network and join the different containers that
 #### Connect to the network
 
     docker network connect mynetwork idOrNameContainer
+
     docker network connect mynetwork idOrNameContainer2
-    
-    docker network list
 
-
-~~~
-
-
-NETWORK ID          NAME                DRIVER              SCOPE
- 3afae4a12ba2        bridge              bridge              local
- a775ae96b77b        host                host                local
- 1b53f1f984d7        mynetwork           bridge              local
- 773be8bbaedb        none                null                local
-
-    docker network inspect mynetwork
-
-
-> [
-    {
-        "Name": "mynetwork",
-        "Id": "1b53f1f984d7ba552bab94266fe738e2e8d817db35826b97ddbf821ff3d0496b",
-        "Created": "2018-02-01T13:29:31.433084174+01:00",
-        "Scope": "local",
-        "Driver": "bridge",
-        "EnableIPv6": false,
-        "IPAM": {
-            "Driver": "default",
-            "Options": {},
-            "Config": [
-                {
-                    "Subnet": "172.18.0.0/16",
-                    "Gateway": "172.18.0.1"
-                }
-            ]
-        },
-        "Internal": false,
-        "Attachable": false,
-        "Ingress": false,
-        "Containers": {
-            "90ce912d80979e7c11795795dc13d028663518e9b892861e6553076baeedbd7b": {
-                "Name": "unruffled_nightingale",
-                "EndpointID": "08dbcfa7913c199fae3ec512932f603e66d39322aded23d54f00d278ba216961",
-                "MacAddress": "02:42:ac:12:00:02",
-                "IPv4Address": "172.18.0.2/16",
-                "IPv6Address": ""
-            },
-            "be887ba53a0a39237c187dddb3a77126c625415fd72332693d873446a1216f26": {
-                "Name": "priceless_golick",
-                "EndpointID": "f0e46208b00141e0295e3f349c035bd4db1d5396907718945f1a2e5710a97f5a",
-                "MacAddress": "02:42:ac:12:00:03",
-                "IPv4Address": "172.18.0.3/16",
-                "IPv6Address": ""
-            }
-        },
-        "Options": {},
-        "Labels": {}
-    }
-]
-
-~~~
+container1 and container2 could communicate now

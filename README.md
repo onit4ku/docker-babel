@@ -1,4 +1,4 @@
-# docker-babel
+# docker-mern
 
 ## A Dockerized MERN (Mongo, Express, Node, React) project
 
@@ -11,7 +11,7 @@ Basic mern-stack install application meant to be run along side mongodb (not inc
 
 ### 2. Build image from Dockerfile
 
-    docker build /home/user/projects/docker-babel -t "docker-babel"
+    docker build /home/user/projects/docker-mern -t "docker-mern"
 
 ### 3. Run `docker-babel` image container
 
